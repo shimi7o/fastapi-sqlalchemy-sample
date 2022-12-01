@@ -1,0 +1,27 @@
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "dockerComposeFile": "compose.yaml",
+  "service": "code",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "student",
+  "remoteEnv": {
+    "PYTHONPATH": "/workspace/sample/app:${containerEnv:PYTHONPATH}"
+  },
+  "settings": {
+    "terminal.integrated.shellIntegration.enabled": false,
+    "terminal.integrated.defaultProfile.linux": "bash (login)",
+    "terminal.integrated.profiles.linux": {
+      "bash (login)": {
+        "path": "/bin/bash",
+        "args": [
+          "--login"
+        ],
+        "overrideName": false,
+        "icon": "terminal"
+      }
+    }
+  },
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance"
+  ]

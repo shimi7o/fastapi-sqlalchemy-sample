@@ -1,0 +1,29 @@
+services:
+  code:
+    container_name: fastapi-sqlalchemy-sample-code
+    build:
+      context: .
+      dockerfile: code.dockerfile
+    volumes:
+      - type: bind
+        source: ..
+        target: /workspace
+        consistency: cached
+    tty: true
+    environment:
+      TZ: Asia/Tokyo
+  mysql:
+    container_name: fastapi-sqlalchemy-sample-mysql
+    build:
+      context: .
+      dockerfile: mysql.dockerfile
+    volumes:
+      - mysql-volume:/var/lib/mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: fastapi-sqlalchemy-sample
+volumes:
+  mysql-volume:
+    name: fastapi-sqlalchemy-sample-mysql-volume
